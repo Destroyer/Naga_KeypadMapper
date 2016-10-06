@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="1532", SYMLINK+="naga", RUN+="/bin/systemctl --no-block start naga@%k.service"

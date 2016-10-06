@@ -4,9 +4,9 @@ Requires: `xdotool` and an X server environment to work.
 
 Currently tested with:  
 - Razer Naga Epic Chroma in CentOS 7  
-- Razer Naga Epic (pre-2014 version) in Ubuntu 14.04, 15.04, 15.10  
+- Razer Naga Epic (pre-2014 version) in Ubuntu 14.04, 15.04, 15.10, 16.04  
 - Razer Naga (RZ01-0028) (thanks to khornem) in Ubuntu 14.04  
-- Razer Naga 2014 (thanks to Destroyer) in Ubuntu 15.04, 15.10  
+- Razer Naga 2014 (thanks to Destroyer) in Ubuntu 15.04, 15.10, 16.04  
 - Razer Naga Molten (thanks to noobxgockel) in Linux Mint 17.02  
 - Razer Chroma (thanks to felipeacsi) in Manjaro
 
@@ -89,12 +89,16 @@ If you want to dig more into configuration, you might find these tools useful: `
 
 ##INSTALLATION
 
-KeypadMapper does not need any dependencies besides having installed `xdotool` http://www.semicomplete.com/projects/xdotool/  (in the oficial ubuntu, fedora, centOS, etc repositories) and g++
+KeypadMapper does not need any dependencies besides having installed `xdotool` http://www.semicomplete.com/projects/xdotool/  (in the oficial ubuntu, fedora, centOS, etc repositories) and g++.
 
 Change `src/naga.cpp` to adapt the installation to another device, using different inputs and/or different key codes than the Naga Epic, 2014, Molten or Chroma. For Example, Epic Chroma is compatible with Epic (they have the same buttons), so you would only have to add an additional line to the devices vector.
 
 Run `sudo bash install.sh` .
 This will compile the source and copy the necessary files (see `install.sh` for more info).
+
+##AUTORUN
+
+By default, daemon is added as a systemd service. This allows for running the daemon whenever the device is plugged in. If your distro doesn't have systemd you can use legacy autorun scripts. See `install.sh` for more info.
  
 
 ##USAGE

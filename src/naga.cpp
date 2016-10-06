@@ -117,12 +117,18 @@ public:
             FD_SET(side_btn_fd, &readset);
             FD_SET(extra_btn_fd, &readset);
             rd = select(FD_SETSIZE, &readset, NULL, NULL, NULL);
-            if (rd == -1) exit(2);
+            if (rd == -1) {
+            	cout << "Naga disconnected." << endl;
+            	exit(0);
+            }
 
             if (FD_ISSET(side_btn_fd, &readset)) // Side buttons
             {
                 rd1 = read(side_btn_fd, ev1, size * 64);
-                if (rd1 == -1) exit(2);
+                if (rd1 == -1) {
+                	cout << "Naga disconnected." << endl;
+                	exit(0);
+                }
 
                 if (ev1[0].value != ' ' && ev1[1].value == 1 && ev1[1].type == 1)  // Only read the key press event
                     switch (ev1[1].code) {
@@ -147,7 +153,10 @@ public:
             else // Extra buttons
             {
                 rd2 = read(extra_btn_fd, ev2, size * 64);
-                if (rd2 == -1) exit(2);
+                if (rd2 == -1) {
+                	cout << "Naga disconnected." << endl;
+                	exit(0);
+                }
 
                 if (ev2[1].type == 1 && ev2[1].value == 1) //Only extra buttons
                     switch (ev2[1].code) {
@@ -213,8 +222,8 @@ public:
 
 
 int main(int argc, char *argv[]) {
+    clog << "Starting naga daemon." << endl;
     NagaDaemon daemon(argc, argv);
-    clog << "Starting naga daemon" << endl;
     daemon.run();
 
     return 0;

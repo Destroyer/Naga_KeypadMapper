@@ -1,0 +1,15 @@
+[Unit]
+Description=Razer keypad mapper
+Requires=local-fs.target graphical.target
+After=local-fs.target
+BindTo=dev-%i.device
+
+[Service]
+User=usr
+Group=input
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=home/.Xauthority
+ExecStart=/usr/local/bin/nagastart.sh
+
+[Install]
+Alias=multi-user.target
