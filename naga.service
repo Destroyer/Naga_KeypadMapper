@@ -1,8 +1,9 @@
+# TODO fix when https://superuser.com/questions/759759/writing-a-service-that-depends-on-xorg works
 [Unit]
 Description=Razer keypad mapper
 Requires=local-fs.target graphical.target
 After=local-fs.target
-BindTo=dev-%i.device
+#BindTo=dev-%i.device
 
 [Service]
 User=usr
